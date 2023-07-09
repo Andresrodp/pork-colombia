@@ -29,8 +29,15 @@ const Camera = () => {
     const context = canvasRef.current.getContext('2d');
     context.drawImage(videoRef.current, 0, 0, 640, 480);
     const photo = canvasRef.current.toDataURL('image/png');
-    setPhoto(photo);
-    console.log(data);
+    const byteString = atob(photo.split(',')[1]);
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+    const blob = new Blob([ab], { type: 'image/png' });
+    const file = new File([blob], 'photo.png');
+    setPhoto(file);
     stopCamera();
     router.push('/imageprev');
   };

@@ -3,19 +3,55 @@ import react from "react";
 import useStoreData from "../../stores/index.js";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+// import axios from "axios";
+import Swal from "sweetalert2";
+
 
 const ImagePrev = () => {
-  const { photo } = useStoreData();
+  const { name, email, photo } = useStoreData();
   const router = useRouter();
   const data = useStoreData(state => state);
 
   const handlePutData = async () => {
-    console.log(data);
+    const formData = new FormData();
+    try {
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('image', photo);
+      console.log('Data >', data);
+      console.log('Form Data >', formData.values());
+      const res = await fetch('http://juega.comemascarnedecerdo.co/api/database/users/v1', {
+        method: 'POST',
+        body: formData,
+      });
+      console.log('respuesta >', res);
+      if (res.ok) {
+        Swal.fire({
+          title: '¡Gracias por participar!',
+          text: 'Tu foto ha sido enviada con éxito',
+          icon: 'success',
+          confirmButtonText: 'Aceptar'
+        }).then((result) => {
+          router.push('/');
+        })
+      } else {
+        Swal.fire({
+          title: '¡Error!',
+          text: 'Ocurrió un error al enviar tu foto',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+        }).then((result) => {
+          router.push('/');
+        })
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
   return (
     <div className="w-full h-screen flex flex-col gap-3 items-center justify-center">
       <div className="relative h-auto">
-        <Image src={photo} alt="photo" width={640} height={420} />
+        <Image src={URL.createObjectURL(photo)} alt="photo" width={640} height={420} />
         <img src="https://res.cloudinary.com/do1akn4ua/image/upload/v1688695585/pork-colombia/marco_siqekm.png" className="absolute top-0 left-0 w-full h-full" />
         {/* <div className="absolute top-0 left-0 w-full h-full bg-[url('https://res.cloudinary.com/do1akn4ua/image/upload/v1688695585/pork-colombia/marco_siqekm.png')] bg-contain"></div> */}
       </div>
