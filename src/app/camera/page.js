@@ -48,7 +48,7 @@ const Camera = () => {
     <div className="w-full flex items-center justify-center flex-col h-screen bg-[url('https://res.cloudinary.com/do1akn4ua/image/upload/v1688429778/pork-colombia/background-take-picture_wrpuk6.png')] bg-cover">
       <div className="w-10/12 flex items-center">
         <video ref={videoRef} className="w-full z-10" autoPlay></video>
-        <button className="rounded-full z-50 w-10 h-10 bg-black -m-12" onClick={takePicture}></button>
+        <button className="rounded-full z-50 w-10 h-10 bg-gray-500 -m-12" onClick={takePicture}></button>
       </div>
       <canvas ref={canvasRef} width="640" height="480" className="hidden"></canvas>
     </div>
