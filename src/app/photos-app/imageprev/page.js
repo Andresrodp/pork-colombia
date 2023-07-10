@@ -1,6 +1,6 @@
 'use client'
 import react from "react";
-import useStoreData from "../../stores/index.js";
+import useStoreData from "../../../stores/index.js";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 // import axios from "axios";
@@ -42,7 +42,7 @@ const ImagePrev = () => {
           icon: 'error',
           confirmButtonText: 'Aceptar'
         }).then((result) => {
-          router.push('/');
+          router.push('/photos-app');
         })
       }
     } catch (error) {

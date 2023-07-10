@@ -4,7 +4,7 @@ const nextConfig = {
     domains: ['res.cloudinary.com'],
   },
   images: { unoptimized: true }, // for local development
-  output: 'export'
+  output: 'export',
 }
 
 module.exports = nextConfig
