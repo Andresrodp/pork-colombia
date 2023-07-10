@@ -11,6 +11,7 @@ const ImagePrev = () => {
   const { name, email, photo } = useStoreData();
   const router = useRouter();
   const data = useStoreData(state => state);
+  const photorender = photo ? URL.createObjectURL(photo) : '';
 
   const handlePutData = async () => {
     const formData = new FormData();
@@ -51,8 +52,8 @@ const ImagePrev = () => {
   return (
     <div className="w-full h-screen flex flex-col gap-3 items-center justify-center">
       <div className="relative h-auto">
-        <Image src={URL.createObjectURL(photo)} alt="photo" width={640} height={420} />
-        <img src="https://res.cloudinary.com/do1akn4ua/image/upload/v1688695585/pork-colombia/marco_siqekm.png" className="absolute top-0 left-0 w-full h-full" />
+        <Image src={photorender} alt="photo" width={640} height={420} />
+        <Image alt="" width={640} height={420} src="https://res.cloudinary.com/do1akn4ua/image/upload/v1688695585/pork-colombia/marco_siqekm.png" className="absolute top-0 left-0 w-full h-full" />
         {/* <div className="absolute top-0 left-0 w-full h-full bg-[url('https://res.cloudinary.com/do1akn4ua/image/upload/v1688695585/pork-colombia/marco_siqekm.png')] bg-contain"></div> */}
       </div>
       <div className="flex gap-4">
