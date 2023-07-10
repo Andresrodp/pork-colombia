@@ -11,7 +11,7 @@ const Camera = () => {
   const router = useRouter();
 
   const startCamera = () => {
-    navigator.mediaDevices.getUserMedia({
+    navigator.mediaDevices?.getUserMedia({
       video: true,
       audio: false
     }).then((stream) => {
