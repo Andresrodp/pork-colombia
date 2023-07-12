@@ -2,7 +2,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import useStoreData from '../../stores/index.js';
+import useStoreData from '../stores/index.js';
 import { useRouter, } from 'next/navigation';
 
 export default function Home() {
@@ -26,7 +26,7 @@ export default function Home() {
     onSubmit: values => {
       setEmail(values.email);
       setName(values.name);
-      router.push('/photos-app/picture');
+      router.push('/picture');
     },
   });
 

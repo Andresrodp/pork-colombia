@@ -1,6 +1,6 @@
 'use client'
 import react from "react";
-import useStoreData from "../../../stores/index.js";
+import useStoreData from "../../stores/index.js";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 // import axios from "axios";
@@ -21,7 +21,7 @@ const ImagePrev = () => {
       formData.append('image', photo);
       console.log('Data >', data);
       console.log('Form Data >', formData.values());
-      const res = await fetch('http://juega.comemascarnedecerdo.co/api/database/users/v1', {
+      const res = await fetch('https://photos-app.comemascarnedecerdo.co/api/database/users/v1', {
         method: 'POST',
         body: formData,
       });

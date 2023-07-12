@@ -1,5 +1,6 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
+import  GoogleAnalytics from './_components/web-vitals.js'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,6 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <GoogleAnalytics GA_TRAKING_ID={process.env.GA_TRAKING_ID} />
       <body className={inter.className}>{children}</body>
     </html>
   )

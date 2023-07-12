@@ -1,6 +1,6 @@
 'use client'
 import React, { useRef, useEffect } from "react";
-import useStoreData from '../../../stores/index.js';
+import useStoreData from '../../stores/index.js';
 import { useRouter } from "next/navigation";
 
 const Camera = () => {
@@ -39,7 +39,7 @@ const Camera = () => {
     const file = new File([blob], 'photo.png');
     setPhoto(file);
     stopCamera();
-    router.push('/photos-app/imageprev');
+    router.push('/imageprev');
   };
   useEffect(() => {
     startCamera();
