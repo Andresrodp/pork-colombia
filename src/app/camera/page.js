@@ -12,10 +12,10 @@ const Camera = () => {
 
   const startCamera = () => {
     navigator?.mediaDevices.getUserMedia({
-      video: true,
+      video: {
+        facingMode: { exact: "environment" },
+      },
       audio: false,
-      facingMode: 'environment'
-
     }).then((stream) => {
       videoRef.current.srcObject = stream;
     });
